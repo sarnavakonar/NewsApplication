@@ -15,6 +15,12 @@ public class News implements Serializable {
     private String urlToImage;
     @SerializedName("publishedAt")
     private String publishedAt;
+    @SerializedName("url")
+    private String url;
+
+    @SerializedName("content")
+    private String content;
+
     @SerializedName("source")
     private Source source;
 
@@ -37,9 +43,22 @@ public class News implements Serializable {
     public String getUrlToImage() {
         return urlToImage;
     }
+    public String getContent() {
+        return content;
+    }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
     public void setUrlToImage(String urlToImage) {
         this.urlToImage = urlToImage;
+    }
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getPublishedAt() {

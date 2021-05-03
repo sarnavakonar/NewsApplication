@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class DBNews {
 
@@ -15,10 +17,21 @@ public class DBNews {
 
     @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "content")
+    private String content;
 
-    @ColumnInfo(name = "url")
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    @ColumnInfo(name = "urlToImage")
     private String urlToImage;
-
+    @ColumnInfo(name = "url")
+    private String url;
     @ColumnInfo(name = "published_at")
     private String publishedAt;
 
@@ -55,6 +68,13 @@ public class DBNews {
 
     public void setUrlToImage(String urlToImage) {
         this.urlToImage = urlToImage;
+    }
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getPublishedAt() {

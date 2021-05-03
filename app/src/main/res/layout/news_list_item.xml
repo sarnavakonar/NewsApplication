@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="news"
             type="com.sarnava.newsapplication.data.News" />
     </data>
 
     <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="230dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="5dp">
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                app:url="@{news.urlToImage}"/>
+                app:url="@{news.urlToImage}" />
 
             <View
                 android:layout_width="match_parent"
@@ -39,41 +40,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentBottom="true"
                 android:padding="12dp">
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/title"
-                    android:text="@{news.title}"/>
+                    android:layout_gravity="top"
+                    android:text="@{news.title}"
+                    android:theme="@style/title" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/description_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="24dp">
+                    android:layout_marginTop="10dp"
+                    android:text="@{news.description}"
+                    android:theme="@style/other" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/source"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/other"
-                        android:text="@{news.source.name}"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:weightSum="1"
 
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/other"
-                        android:layout_marginLeft="12dp"
-                        android:alpha=".75"
-                        android:text="@{news.formattedDate}"/>
+                >
 
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="@{news.source.name}"
+                    android:theme="@style/other"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:text="@{news.publishedAt}"
+                    android:textAlignment="viewEnd"
+                    android:theme="@style/other"
+                    android:layout_marginRight="10dp" />
 
             </LinearLayout>
+
 
         </RelativeLayout>
 

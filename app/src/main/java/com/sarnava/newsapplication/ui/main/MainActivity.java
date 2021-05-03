@@ -53,26 +53,27 @@ public class MainActivity extends BaseActivity {
 
         viewModel.getDbNews().observe(this, dbNews -> {
 
-            if (dbNews.size() > 0)
+            if (dbNews.size() > 0) {
                 viewModel.setShouldUpdate(true);
 
-            List<News> fetchedDromDB = new ArrayList<>();
-            for (int i = 0; i < dbNews.size(); i++) {
+                List<News> fetchedDromDB = new ArrayList<>();
+                for (int i = 0; i < dbNews.size(); i++) {
 
-                News db_news = new News();
-                db_news.setTitle(dbNews.get(i).getTitle());
-                db_news.setDescription(dbNews.get(i).getDescription());
-                db_news.setUrlToImage(dbNews.get(i).getUrlToImage());
-                db_news.setPublishedAt(dbNews.get(i).getPublishedAt());
+                    News db_news = new News();
+                    db_news.setTitle(dbNews.get(i).getTitle());
+                    db_news.setDescription(dbNews.get(i).getDescription());
+                    db_news.setUrlToImage(dbNews.get(i).getUrlToImage());
+                    db_news.setPublishedAt(dbNews.get(i).getPublishedAt());
 
-                News.Source source = new News.Source();
-                source.setName(dbNews.get(i).getSource());
-                db_news.setSource(source);
+                    News.Source source = new News.Source();
+                    source.setName(dbNews.get(i).getSource());
+                    db_news.setSource(source);
 
-                fetchedDromDB.add(db_news);
+                    fetchedDromDB.add(db_news);
+                }
+
+                adapter.setNews(fetchedDromDB);
             }
-
-            adapter.setNews(fetchedDromDB);
             fetchFromServer();
         });
     }
